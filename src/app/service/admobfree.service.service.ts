@@ -27,6 +27,12 @@ export class AdmobFreeService {
     //id: "ca-app-pub-3940XXXXXXX42544/6300978111"
   };
 
+  BannerConfig: AdMobFreeBannerConfig = {
+    isTesting: true, // Remove in production
+    autoShow: true,
+    id: "ca-app-pub-1052013623211529/3427669308"
+  };
+
   constructor(
       private admobFree: AdMobFree,
       public platform: Platform
@@ -71,12 +77,7 @@ export class AdmobFreeService {
 
 
   BannerAd() {
-    let bannerConfig: AdMobFreeBannerConfig = {
-      isTesting: true, // Remove in production
-      autoShow: true//,
-      //id: "ca-app-pub-39402XXXXXXX44/6300978111"
-    };
-    this.admobFree.banner.config(bannerConfig);
+    this.admobFree.banner.config(this.BannerConfig);
 
     this.admobFree.banner.prepare().then(() => {
       // success

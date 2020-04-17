@@ -16,14 +16,10 @@ export class HomePage  implements OnInit {
   ngOnInit() {
     this.admobFreeService.BannerAd();
   }
-
   showInterstitial(){
     this.admobFreeService.InterstitialAd();
   }
-
   showRewardVideo(){
     this.admobFreeService.RewardVideoAd();
   }
-
-
 }
