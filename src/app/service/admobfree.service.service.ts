@@ -30,7 +30,7 @@ export class AdmobFreeService {
   BannerConfig: AdMobFreeBannerConfig = {
     isTesting: true, // Remove in production
     autoShow: true,
-    id: "ca-app-pub-1052013623211529/3427669308"
+    //id: "ca-app-pub-3940XXXXXXX42544/6300978111"
   };
 
   constructor(
