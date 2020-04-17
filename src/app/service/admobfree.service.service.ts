@@ -16,7 +16,7 @@ export class AdmobFreeService {
     // add your config here
     // for the sake of this example we will just use the test config
     isTesting: true,
-    autoShow: false,
+    autoShow: false//,
     //id: "ca-app-pub-39402XXXXXXXX2544/6300978111"
   };
 
@@ -30,7 +30,13 @@ export class AdmobFreeService {
   BannerConfig: AdMobFreeBannerConfig = {
     isTesting: true, // Remove in production
     autoShow: true,
-    //id: "ca-app-pub-3940XXXXXXX42544/6300978111"
+    id: "ca-app-pub-1052013623211529/3427669308"
+  };
+
+  BannerConfigIOS: AdMobFreeBannerConfig = {
+    isTesting: true, // Remove in production
+    autoShow: true,
+    id: "ca-app-pub-1052013623211529/3427669308"
   };
 
   constructor(
@@ -39,6 +45,11 @@ export class AdmobFreeService {
   ) {
 
     platform.ready().then(() => {
+      this.admobFree.banner.config(this.BannerConfig);
+
+      this.admobFree.banner.prepare().then(() => {
+        // success
+      }).catch(e => alert(e));
 
       // Load ad configuration
       this.admobFree.interstitial.config(this.interstitialConfig);
@@ -77,11 +88,23 @@ export class AdmobFreeService {
 
 
   BannerAd() {
-    this.admobFree.banner.config(this.BannerConfig);
 
-    this.admobFree.banner.prepare().then(() => {
-      // success
-    }).catch(e => alert(e));
+    if(this.platform.is('cordova')) {
+      this.admobFree.banner.config(this.BannerConfig);
+
+      this.admobFree.banner.prepare().then(() => {
+        // success
+      }).catch(e => alert(e));
+    }
+
+    if(this.platform.is('ios')){
+      this.admobFree.banner.config(this.BannerConfigIOS);
+
+      this.admobFree.banner.prepare().then(() => {
+        // success
+      }).catch(e => alert(e));
+    }
+
   }
 
   InterstitialAd() {

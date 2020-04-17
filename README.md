@@ -13,3 +13,8 @@
 
 ## Fourth you implement Admob Free on your project
 - You need to be sure that you have the play service in the same version in all your project
+
+## Five for ios put the following code in config.xml
+- <config-file target="*-Info.plist" parent="GADApplicationIdentifier">
+      <string>YOUR_IOS_ADMOB_APP_ID_AS_FOUND_IN_ADMOB</string>
+  </config-file>

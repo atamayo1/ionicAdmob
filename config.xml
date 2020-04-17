@@ -45,6 +45,9 @@
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <platform name="ios">
+        <config-file parent="GADApplicationIdentifier" target="*-Info.plist">
+            <string>ca-app-pub-1052013623211529~8734335877</string>
+        </config-file>
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
