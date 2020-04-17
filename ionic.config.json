@@ -1,0 +1,7 @@
+{
+  "name": "ionicAdmob",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
