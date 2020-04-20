@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AdmobFreeService} from '../service/admobfree.service.service';
 import {Platform} from '@ionic/angular';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -12,17 +13,14 @@ export class HomePage  implements OnInit {
 
   constructor(
       private admobFreeService: AdmobFreeService,
-      private platform: Platform
+      private router: Router
   ) {
-    if (this.platform.is('cordova')) {
-      this.showBanner();
-    }
   }
 
   ngOnInit() {
   }
-  showBanner(){
-    this.admobFreeService.BannerAd();
+  goToShowBanner(){
+    this.router.navigate(['/banner'])
   }
   showInterstitial(){
     this.admobFreeService.InterstitialAd();
