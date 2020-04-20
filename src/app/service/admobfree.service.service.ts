@@ -15,22 +15,22 @@ export class AdmobFreeService {
   interstitialConfig: AdMobFreeInterstitialConfig = {
     // add your config here
     // for the sake of this example we will just use the test config
-    isTesting: true,
+    //id: "ca-app-pub-3940XXXXXXX42544/6300978111"
+    isTesting: true, // Remove in production
     autoShow: false//,
-    //id: "ca-app-pub-39402XXXXXXXX2544/6300978111"
   };
 
   //Reward Video Ad's Configurations
   RewardVideoConfig: AdMobFreeRewardVideoConfig = {
+    //id: "ca-app-pub-3940XXXXXXX42544/6300978111"
     isTesting: true, // Remove in production
     autoShow: false//,
-    //id: "ca-app-pub-3940XXXXXXX42544/6300978111"
   };
-
   BannerConfig: AdMobFreeBannerConfig = {
-    isTesting: true, // Remove in production
+    //id: "ca-app-pub-3940XXXXXXX42544/6300978111"
+    isTesting: true,
     autoShow: true,
-    id: "ca-app-pub-1052013623211529/3427669308"
+    size: 'SMART_BANNER'
   };
 
   constructor(
@@ -39,18 +39,12 @@ export class AdmobFreeService {
   ) {
 
     platform.ready().then(() => {
-      this.admobFree.banner.config(this.BannerConfig);
-
-      this.admobFree.banner.prepare().then(() => {
-        // success
-      }).catch(e => alert(e));
-
       // Load ad configuration
       this.admobFree.interstitial.config(this.interstitialConfig);
       //Prepare Ad to Show
       this.admobFree.interstitial.prepare()
           .then(() => {
-            // alert(1);
+           //  alert(2);
           }).catch(e => alert(e));
 
 
@@ -59,11 +53,9 @@ export class AdmobFreeService {
       //Prepare Ad to Show
       this.admobFree.rewardVideo.prepare()
           .then(() => {
-            // alert(2);
+          //  alert(3);
           }).catch(e => alert(e));
-
     });
-
     //Handle interstitial's close event to Prepare Ad again
     this.admobFree.on('admob.interstitial.events.CLOSE').subscribe(() => {
       this.admobFree.interstitial.prepare()
@@ -82,11 +74,11 @@ export class AdmobFreeService {
 
 
   BannerAd() {
-      this.admobFree.banner.config(this.BannerConfig);
+    this.admobFree.banner.config(this.BannerConfig);
 
-      this.admobFree.banner.prepare().then(() => {
-        // success
-      }).catch(e => alert(e));
+    this.admobFree.banner.prepare().then(() => {
+      this.admobFree.banner.show();
+    }).catch(e => alert(e));
   }
 
   InterstitialAd() {
@@ -110,6 +102,5 @@ export class AdmobFreeService {
     })
         .catch(e => alert("isReady " + e));
   }
-
 
 }

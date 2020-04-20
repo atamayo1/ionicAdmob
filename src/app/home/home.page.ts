@@ -11,9 +11,13 @@ export class HomePage  implements OnInit {
 
   constructor(
       private admobFreeService: AdmobFreeService,
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
+    this.showBanner();
+  }
+  showBanner(){
     this.admobFreeService.BannerAd();
   }
   showInterstitial(){
