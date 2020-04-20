@@ -33,12 +33,6 @@ export class AdmobFreeService {
     id: "ca-app-pub-1052013623211529/3427669308"
   };
 
-  BannerConfigIOS: AdMobFreeBannerConfig = {
-    isTesting: true, // Remove in production
-    autoShow: true,
-    id: "ca-app-pub-1052013623211529/3427669308"
-  };
-
   constructor(
       private admobFree: AdMobFree,
       public platform: Platform
@@ -88,23 +82,11 @@ export class AdmobFreeService {
 
 
   BannerAd() {
-
-    if(this.platform.is('cordova')) {
       this.admobFree.banner.config(this.BannerConfig);
 
       this.admobFree.banner.prepare().then(() => {
         // success
       }).catch(e => alert(e));
-    }
-
-    if(this.platform.is('ios')){
-      this.admobFree.banner.config(this.BannerConfigIOS);
-
-      this.admobFree.banner.prepare().then(() => {
-        // success
-      }).catch(e => alert(e));
-    }
-
   }
 
   InterstitialAd() {
