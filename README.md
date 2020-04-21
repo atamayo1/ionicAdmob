@@ -18,3 +18,9 @@
 - <config-file target="*-Info.plist" parent="GADApplicationIdentifier">
       <string>YOUR_IOS_ADMOB_APP_ID_AS_FOUND_IN_ADMOB</string>
   </config-file>
+
+## From ios just put the following code in the platforms/ios/nameOfTheApp/nameOfTheApp-Info.plist  
+- <key>GADIsAdManagerApp</key>
+  <true/>
+  <key>GADApplicationIdentifier</key>
+  <string>ca-app-pub-XXXXXXX~YYYYYYY</string>
